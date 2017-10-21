@@ -1,3 +1,5 @@
+import string
+
 import numpy as np
 
 from keras.models import Sequential
@@ -33,8 +35,8 @@ def build_part1_RNN(window_size):
     model.add(LSTM(5, input_shape=(window_size, 1)))
     model.add(Dense(1))
    
- # build model using keras documentation recommended optimizer initialization
-    optimizer = keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
+    # build model using keras documentation recommended optimizer initialization
+    optimizer = keras.optimizers.RMSprop(lr=0.005, rho=0.9, epsilon=1e-08, decay=0.0)
 
     # compile the model
     model.compile(loss='mean_squared_error', optimizer=optimizer)
