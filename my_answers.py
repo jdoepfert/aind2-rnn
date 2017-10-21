@@ -3,7 +3,7 @@ import string
 import numpy as np
 
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Dense, Activation
 from keras.layers import LSTM
 import keras
 
@@ -36,14 +36,14 @@ def build_part1_RNN(window_size):
     model.add(Dense(1))
    
     # build model using keras documentation recommended optimizer initialization
-    optimizer = keras.optimizers.RMSprop(lr=0.005, rho=0.9, epsilon=1e-08, decay=0.0)
+    optimizer = keras.optimizers.RMSprop(lr=0.005, rho=0.9, epsilon=1e-08,
+                                         decay=0.0)
 
     # compile the model
     model.compile(loss='mean_squared_error', optimizer=optimizer)
     return model
 
 ### TODO: return the text input with only ascii lowercase and the punctuation given below included.
-
 def cleaned_text(text):
     punctuation = ['!', ',', '.', ':', ';', '?']
     to_remove = set(text) - set(punctuation) - set(string.ascii_lowercase) - set('0123456789') - set(' ')
